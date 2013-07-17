@@ -12,5 +12,7 @@
 class User < ActiveRecord::Base
   has_many :crushes
   has_many :votes
+  attr_accessible :username, :password
+  validates :username, presence: true
   has_secure_password
 end
