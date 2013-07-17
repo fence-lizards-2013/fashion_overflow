@@ -8,11 +8,6 @@ gem 'rails', '3.2.13'
 gem 'pg'
 
 
-group :test, :development do
-  gem 'rspec-rails'
-  gem 'capybara'
-  gem 'annotate'
-end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -30,6 +25,11 @@ gem 'jquery-rails'
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'annotate'
+end
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
