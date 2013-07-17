@@ -21,4 +21,17 @@ describe User do
   it "should create a user object when data is valid" do
     User.find(user.id).should eq user    
   end
+
+  it "should not be valid if username is duplicate" do
+    user
+    User.create(username: username, password: password).should be_invalid
+  end
+
+  it "should create a user in database when form is filled out correctly" do
+    visit '/users/new'
+    fill_in "user[username]", with: "Jeffrey"
+    fill_in "user[password]", with: "password"
+    click_button "Create User"
+    User.find_by_username("Jeffrey").should be_true
+  end
 end

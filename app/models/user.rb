@@ -10,9 +10,10 @@
 #
 
 class User < ActiveRecord::Base
+  attr_accessible :username, :password
   has_many :crushes
   has_many :votes
-  attr_accessible :username, :password
   validates :username, presence: true
+  validates :username, uniqueness: true
   has_secure_password
 end
