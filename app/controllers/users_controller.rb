@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    puts params
     @user = User.new
   end
   
