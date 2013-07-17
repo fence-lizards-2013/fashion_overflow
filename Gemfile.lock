@@ -130,8 +130,8 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
-  capybara
   bcrypt-ruby (~> 3.0.0)
+  capybara
   coffee-rails (~> 3.2.1)
   jquery-rails
   pg
