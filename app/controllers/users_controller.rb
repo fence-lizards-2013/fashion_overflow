@@ -19,5 +19,7 @@ class UsersController < ApplicationController
     @user = User.new
     # redirect_to
   end
+
+  
   
 end

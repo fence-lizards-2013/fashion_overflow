@@ -34,4 +34,9 @@ describe User do
     click_button "Create User"
     User.find_by_username("Jeffrey").should be_true
   end
+  
+  it "should find an existing user with a valid username and password" do
+    
+  end
+
 end
