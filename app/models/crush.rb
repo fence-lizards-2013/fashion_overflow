@@ -3,14 +3,16 @@ class Crush < ActiveRecord::Base
   belongs_to :user
 
   def up_votes
-    self.votes.find_by_up(true).size
+    self.votes.where(up: true)
   end
 
   def down_votes
-    self.votes.find_by_up(false).size
+    self.votes.where(up: false)
   end
 
   def aggregate
-    self.up_votes - self.down_votes
+    up   = self.up_votes.size
+    down = self.down_votes.size
+    up - down
   end
 end
