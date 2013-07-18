@@ -1,5 +1,8 @@
 class Crush < ActiveRecord::Base
   has_many :votes
+  # has_many :up_votes,   :class_name => 'Vote', :conditions => {:up => true}
+  # has_many :down_votes, :class_name => 'Vote', :conditions => {:up => false}
+
   belongs_to :user
   has_many :users_who_voted, :through => :votes, :source => :user
 
@@ -8,12 +11,13 @@ class Crush < ActiveRecord::Base
 
   attr_accessible :url, :description, :tags_attributes
 
+
   def up_votes
-    self.votes.where(up: true)
+    votes.select{|vote| vote.up }
   end
 
   def down_votes
-    self.votes.where(up: false)
+    votes.reject{|vote| vote.up }
   end
 
   def aggregate
