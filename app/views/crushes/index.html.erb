@@ -1,1 +1,15 @@
  <h2>I am the crush index! bro!</h2>
+
+ <div>
+   <% @crushes.each do |crush| %>
+      <p><%= link_to crush.url, crush.url %></p>
+      <p><%= crush.description %></p>
+      <% if crush.user == @current_user %>
+        <ul>
+          <li><%= link_to 'Edit', edit_crush_path(crush) %></li>
+          <li><%= link_to 'Delete', 'crushes#destroy' %></li>
+        </ul>
+      <% end %>
+   <% end %>
+
+ </div>

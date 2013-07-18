@@ -19,7 +19,6 @@ describe Crush do
       crush.votes << up_vote
       after = crush.votes.size
       expect(after).to eq(before+1)
-
     end
   end
 
