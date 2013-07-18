@@ -27,14 +27,6 @@ describe User do
     User.create(username: username, password: password).should be_invalid
   end
 
-  it "should create a user in database when form is filled out correctly" do
-    visit '/users/new'
-    fill_in "user[username]", with: "Jeffrey"
-    fill_in "user[password]", with: "password"
-    click_button "Create User"
-    User.find_by_username("Jeffrey").should be_true
-  end
-  
   it "should find an existing user with a valid username and password" do
     
   end

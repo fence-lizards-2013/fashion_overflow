@@ -6,7 +6,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(params[:user])
-    redirect_to action: 'show', id: @user.id
+    login(@user)
+    redirect_to root_path
+    # redirect_to session_url action: 'new' 
+    puts "Users#create"
   end
 
 
