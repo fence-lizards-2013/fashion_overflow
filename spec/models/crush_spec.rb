@@ -13,9 +13,9 @@ describe Crush do
 
   context "#up_votes" do
     it "should return the number of up_votes" do
-      before = crush.voteable.size
-      crush.voteable << up_vote
-      after = crush.voteable.size
+      before = crush.votes.size
+      crush.votes << up_vote
+      after = crush.votes.size
       expect(after).to eq(before+1)
     end
   end
