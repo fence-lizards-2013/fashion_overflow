@@ -1,0 +1,8 @@
+<p>
+  <%= link_to @crush.url, @crush.url %><br>
+  <%= @crush.description %><br>
+  <% if @current_user == @crush.user %>
+    <%= link_to 'Edit', edit_crush_path(@crush) %>
+    <%= link_to 'Delete', crush_path(@crush), :method => :delete, :confirm => "Are you sure?" %>
+  <% end %>
+</p>

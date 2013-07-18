@@ -1,0 +1,7 @@
+<br><%= form_for @crush do |f| %>
+  <%= f.label :url, "Url" %><br>
+  <%= f.text_field :url %><br>
+  <%= f.label :description, "Description" %><br>
+  <%= f.text_area :description %><br>
+  <%= f.submit "Submit"%>
+<% end %>

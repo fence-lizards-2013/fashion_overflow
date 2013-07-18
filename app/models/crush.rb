@@ -6,6 +6,8 @@ class Crush < ActiveRecord::Base
   validates_presence_of :url
   validates_presence_of :description
 
+  attr_accessible :url, :description, :tags_attributes
+
   def up_votes
     self.votes.where(up: true)
   end

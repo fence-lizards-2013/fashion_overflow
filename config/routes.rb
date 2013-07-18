@@ -1,10 +1,10 @@
 FashionOverflow::Application.routes.draw do
 
+  root :to => 'crushes#index'
   resources :sessions, :only => [:new, :create, :destroy]
   resources :users
-  root :to => 'crushes#index'
-
   resources :crushes
+  resources :votes, only: [:new, :create]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

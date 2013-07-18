@@ -1,15 +1,18 @@
- <h2>I am the crush index! bro!</h2>
+ <h1>Trending Crushes</h2>
+
+<% if flash.any? %>
+  <h3 style="color: green;"><%= flash[:success] %></h3>
+<% end %>
 
  <div>
    <% @crushes.each do |crush| %>
-      <p><%= link_to crush.url, crush.url %></p>
+    <div>
+      <h3><%= link_to crush.url, crush_path(crush) %></h3>
       <p><%= crush.description %></p>
-      <% if crush.user == @current_user %>
-        <ul>
-          <li><%= link_to 'Edit', edit_crush_path(crush) %></li>
-          <li><%= link_to 'Delete', 'crushes#destroy' %></li>
-        </ul>
-      <% end %>
+      <ul>
+        <li class="vote_link"><%= link_to "upvotes #{crush.up_votes.count}", votes_path({:crush_id => crush, :up => true}), :id => 'vote', :text => 'upvotes', :votes => crush.up_votes.count, :method => 'post', remote: true %></li>
+        <li class="vote_link"><%= link_to "downvotes #{crush.down_votes.count}", votes_path({:crush_id => crush, :up => false}), :text => 'downvotes', :votes => crush.down_votes.count, :id => 'vote', :method => 'post', remote: true %></li>
+      </ul>
+    </div><br>
    <% end %>
-
  </div>

@@ -5,5 +5,5 @@ class Vote < ActiveRecord::Base
   #validates_presence_of :up
   validates :up, inclusion: { in: [true, false] }
 
-  attr_accessible :up
+  attr_accessible :up, :user_id, :crush_id
 end
