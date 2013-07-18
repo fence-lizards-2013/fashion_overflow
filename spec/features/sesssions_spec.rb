@@ -38,8 +38,23 @@ describe "Sessions" do
 
   it "displays errors with correct username, WRONG password" do
     this_user = User.create(username: "topher", password: "password")
+    visit "/sessions/new"
+    fill_in "username",  with: "topher"
+    fill_in "password",  with: "1234"
     click_button "Login"
     current_path.should eq sessions_path
     page.should have_content("An error occured, please try again.")
+  end
+
+  it "should logout a user when then click on logout" do
+    this_user = User.create(username: "topher", password: "password")
+    visit "/sessions/new"
+    fill_in "username",    with: "topher"
+    fill_in "password",  with: "password"
+    click_button "Login"
+    current_path.should eq "/users/#{this_user.id}"
+    click_link "Logout"
+    current_path.should eq root_path
+    page.should have_content("Login")
   end
 end
