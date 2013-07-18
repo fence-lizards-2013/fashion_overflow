@@ -7,11 +7,11 @@ class Crush < ActiveRecord::Base
   validates_presence_of :description
 
   def up_votes
-    self.voteable.where(up: true)
+    self.votes.where(up: true)
   end
 
   def down_votes
-    self.voteable.where(up: false)
+    self.votes.where(up: false)
   end
 
   def aggregate
