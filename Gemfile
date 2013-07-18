@@ -6,7 +6,6 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'pry'
 
 
 
@@ -34,6 +33,7 @@ group :test, :development do
   gem 'faker'
   gem 'database_cleaner'
   gem 'shoulda'
+  gem 'debugger'
 end
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
