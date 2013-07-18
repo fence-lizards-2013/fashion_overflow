@@ -8,7 +8,10 @@
 </head>
 <body>
 
-<%= yield %>
-
+  <nav>  
+    <%= link_to 'Home', root_path %>
+    <%= render 'layouts/navigation' %>
+    <%= yield %>
+  </nav>
 </body>
 </html>

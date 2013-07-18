@@ -21,4 +21,14 @@ describe User do
   it "should create a user object when data is valid" do
     User.find(user.id).should eq user    
   end
+
+  it "should not be valid if username is duplicate" do
+    user
+    User.create(username: username, password: password).should be_invalid
+  end
+
+  it "should find an existing user with a valid username and password" do
+    
+  end
+
 end
