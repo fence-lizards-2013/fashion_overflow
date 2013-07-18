@@ -1,11 +1,12 @@
 $(document).ready(function() {
 
-  $('a#vote').on('ajax:success', function() {
-    var votes = parseInt($(this).attr('votes'));
-    var new_count = votes + 1;
-    var a = $(this);
-    a.attr('votes', new_count);
-    $(this).text(a.attr('text') + ' ' + new_count);
+  $('a#vote').on('ajax:success', function(e, response) {
+    $(this).text($(this).data('text') + ' ' + response.new_count);
+    // once they've voted, disable the links and just display the vote counts!
+  });
+
+  $('a#vote').on('ajax:error', function(e, xhr) {
+    alert("You already voted!");
   });
 
 });

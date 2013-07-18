@@ -4,13 +4,14 @@ class VotesController < ApplicationController
     
   end
 
-  def create 
+  def create
+    up = params[:up] =~ /^t/ ? true : false
     p params
-    @vote = Vote.new(:user_id => current_user.id, :crush_id => params[:crush_id], :up => params[:up])
+    @vote = Vote.new(:user_id => current_user.id, :crush_id => params[:crush_id], :up => up)
     if @vote.save
-      render :json => {:up_votes => @vote.crush.up_votes.count, :down_votes => @vote.crush.down_votes.count}
+      render :json => { :new_count => up ? @vote.crush.up_votes.count : @vote.crush.down_votes.count }
     else
-      render :json => {:success => false}
+      render :json => {:success => false}, :status => :unprocessable_entity
     end
 
   end

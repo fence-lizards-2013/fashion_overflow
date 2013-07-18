@@ -10,8 +10,8 @@
       <h3><%= link_to crush.url, crush_path(crush) %></h3>
       <p><%= crush.description %></p>
       <ul>
-        <li class="vote_link"><%= link_to "upvotes #{crush.up_votes.count}", votes_path({:crush_id => crush, :up => true}), :id => 'vote', :text => 'upvotes', :votes => crush.up_votes.count, :method => 'post', remote: true %></li>
-        <li class="vote_link"><%= link_to "downvotes #{crush.down_votes.count}", votes_path({:crush_id => crush, :up => false}), :text => 'downvotes', :votes => crush.down_votes.count, :id => 'vote', :method => 'post', remote: true %></li>
+        <li class="vote_link"><%= link_to "upvotes #{crush.up_votes.count}", votes_path({:crush_id => crush, :up => true}), :id => 'vote', :data => { :text => 'upvotes'}, :method => 'post', remote: true %></li>
+        <li class="vote_link"><%= link_to "downvotes #{crush.down_votes.count}", votes_path({:crush_id => crush, :up => false}), :data => { :text => 'downvotes'}, :id => 'vote', :method => 'post', remote: true %></li>
       </ul>
     </div><br>
    <% end %>

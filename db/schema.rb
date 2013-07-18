@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130717180012) do
+ActiveRecord::Schema.define(:version => 20130718184602) do
 
   create_table "crushes", :force => true do |t|
     t.string   "url"
@@ -35,5 +35,7 @@ ActiveRecord::Schema.define(:version => 20130717180012) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "votes", ["user_id", "crush_id"], :name => "index_votes_on_user_id_and_crush_id", :unique => true
 
 end
