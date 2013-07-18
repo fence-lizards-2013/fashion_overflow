@@ -9,6 +9,9 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       login @user
       redirect_to user_url action: 'show', id: @user.id
+    else
+      flash[:notice] = "An error occured, please try again."
+      render :new
     end
   end
 
@@ -17,4 +20,4 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 end
-  
+

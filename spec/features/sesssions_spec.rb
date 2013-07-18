@@ -11,11 +11,12 @@ describe "Sessions" do
     current_path.should eq "/users/#{this_user.id}"
   end
 
-  it "displays errors on blank email" do
+  it "displays errors on blank username" do
     visit "/sessions/new"
-    fill_in "user_password",  with: "password"
+    fill_in "username",  with: ""
+    fill_in "password",  with: "honey"
     click_button "Login"
-    page.should have_content("Email can't be blank")
+    page.should have_content("An error occured, please try again.")
   end
-  
+
 end

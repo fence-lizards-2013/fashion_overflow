@@ -1,6 +1,6 @@
 <h3>Login i'm at session new!</h3>
 <%= form_tag sessions_path do %>
- <%= render "shared/form_errors", :object => @session %>
+  <p><%= flash[:notice] %></p>
   <%= label_tag :username %>
   <%= text_field_tag :username %>
   <%= label_tag :password %>
