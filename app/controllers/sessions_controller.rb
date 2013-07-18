@@ -5,11 +5,10 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by_username(params[:username])
+
     if @user && @user.authenticate(params[:password])
       login @user
       redirect_to user_url action: 'show', id: @user.id
-    else
-      render :new
     end
   end
 
