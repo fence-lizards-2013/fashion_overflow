@@ -1,4 +1,5 @@
 require 'spec_helper'
+
 describe "Login" do
 
   it "should create a user in database when form is filled out correctly" do
