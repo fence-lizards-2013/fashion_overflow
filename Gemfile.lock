@@ -156,14 +156,11 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   capybara
   coffee-rails (~> 3.2.1)
-<<<<<<< HEAD
   database_cleaner
   debugger
   factory_girl_rails
   faker
-=======
   haml
->>>>>>> master
   jquery-rails
   pg
   rails (= 3.2.13)
