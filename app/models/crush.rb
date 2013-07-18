@@ -22,3 +22,4 @@ class Crush < ActiveRecord::Base
     up - down
   end
 end
+
