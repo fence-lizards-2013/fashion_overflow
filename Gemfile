@@ -29,6 +29,10 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'annotate'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'database_cleaner'
+  gem 'shoulda'
 end
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

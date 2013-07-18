@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(:version => 20130717180012) do
   end
 
   create_table "votes", :force => true do |t|
-    t.integer  "crush_id"
     t.integer  "user_id"
+    t.integer  "crush_id"
     t.boolean  "up"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
