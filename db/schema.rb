@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130718184602) do
+ActiveRecord::Schema.define(:version => 20130719184229) do
 
   create_table "crushes", :force => true do |t|
     t.string   "url"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(:version => 20130718184602) do
     t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "image_uid"
+    t.string   "image_name"
   end
 
   create_table "users", :force => true do |t|

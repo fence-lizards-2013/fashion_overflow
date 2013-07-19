@@ -4,6 +4,7 @@ class CrushesController < ApplicationController
     crushes = Crush.all
     @sorted_crushes = crushes.sort_by { |crush| crush.aggregate }.reverse
     @current_user = current_user
+    @crushes = Crush.all
   end
 
   def create
@@ -12,8 +13,10 @@ class CrushesController < ApplicationController
     if @crush.save
       redirect_to crush_path(@crush)
     else
-
+      flash[:error] = "Oops, something went wrong. Please try again."
+      redirect_to new_crush_path
     end
+    
   end
 
   def show

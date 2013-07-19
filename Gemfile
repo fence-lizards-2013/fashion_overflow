@@ -8,6 +8,9 @@ gem 'rails', '3.2.13'
 gem 'pg'
 gem 'haml'
 
+gem 'dragonfly', '~>0.9.15'
+gem 'rack-cache', :require => 'rack-cache'
+
 
 
 # Gems used only for assets and not required
@@ -35,6 +38,7 @@ group :test, :development do
   gem 'database_cleaner'
   gem 'shoulda'
   gem 'debugger'
+  gem 'better_errors'
 end
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

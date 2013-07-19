@@ -1,7 +1,19 @@
-<br><%= form_for @crush do |f| %>
+<!-- <br><%= form_for @crush do |f| %>
   <%= f.label :url, "Url" %><br>
   <%= f.text_field :url %><br>
   <%= f.label :description, "Description" %><br>
   <%= f.text_area :description %><br>
   <%= f.submit "Submit"%>
-<% end %>
+<% end %> -->
+<br>
+<%= form_for @crush, :html => { :multipart => true } do |f| -%>
+  <%= f.file_field :image %>
+  <%= f.hidden_field :retained_image %><br>
+  <%= f.label :image_url, "OR upload an image via URL:" %>
+  <%= f.text_field :image_url %><br>
+  <%= f.label :description, "Description" %><br>
+  <%= f.text_area :description %><br>
+  <%= image_tag @crush.image.thumb('100x100').url if @crush.image_uid %>
+  <%= f.submit "Submit" %>
+<% end -%>
+

@@ -7,7 +7,7 @@
  <div>
    <% @sorted_crushes.each do |crush| %>
     <div>
-      <h3><%= link_to crush.url, crush_path(crush) %></h3>
+      <h3><%= link_to image_tag(crush.image.url, width: 500), crush_path(crush) %></h3>
       <p><%= crush.description %></p>
       <ul>
         <li class="vote_link"><%= link_to "upvotes #{crush.up_votes.count}", votes_path({:crush_id => crush, :up => true}), :id => 'vote', :data => { :text => 'upvotes'}, :method => 'post', remote: true %></li>
