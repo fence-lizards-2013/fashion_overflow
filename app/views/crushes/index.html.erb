@@ -5,7 +5,7 @@
 <% end %>
 
  <div>
-   <% @crushes.each do |crush| %>
+   <% @sorted_crushes.each do |crush| %>
     <div>
       <h3><%= link_to crush.url, crush_path(crush) %></h3>
       <p><%= crush.description %></p>

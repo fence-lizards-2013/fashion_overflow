@@ -1,7 +1,8 @@
 class CrushesController < ApplicationController
 
   def index
-    @crushes = Crush.all
+    crushes = Crush.all
+    @sorted_crushes = crushes.sort_by { |crush| crush.aggregate }.reverse
     @current_user = current_user
   end
 
