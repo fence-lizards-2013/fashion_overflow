@@ -11,7 +11,7 @@ class CrushesController < ApplicationController
     @crush = Crush.new(params[:crush])
     @crush.user = current_user
     if @crush.save
-      redirect_to crush_path(@crush)
+      redirect_to root_path
     else
       flash[:error] = "Oops, something went wrong. Please try again."
       redirect_to new_crush_path
