@@ -10,3 +10,9 @@ $(document).ready(function() {
 
 });
 
+//send ajax to server
+// on AJAX success
+// change vote count on the link
+// IF position has changed based on order
+        //  fade out div
+        //
