@@ -5,6 +5,8 @@ describe User do
   let(:username) { "Sample User" }
   let(:password) { "password" }
   let(:user) { User.create(username: username, password: password) }
+  let(:crush) { create :crush }
+  let(:vote) { create :vote, user: user, crush: crush, up: true }
 
   it "should require a username to create a user" do
     expect{ User.create!(username: "", password: password) }.to raise_error
@@ -29,6 +31,13 @@ describe User do
 
   it "should find an existing user with a valid username and password" do
     
+  end
+
+  context "#upvoted_crushes" do
+    it "should find the crushes that the user has upvoted" do
+      crush.votes << vote
+      expect(user.upvoted_crushes).to include crush
+    end
   end
 
 end

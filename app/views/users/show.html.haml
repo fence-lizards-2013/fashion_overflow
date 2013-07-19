@@ -1,0 +1,14 @@
+%h2 Welcome #{ @user.username }
+
+%h3 Your Uploaded Crushes:
+
+%ul
+  - @user.crushes.each do |crush| 
+    %li= link_to crush.url, crush_path(crush)
+
+%h3 Your Upvoted Crushes:
+
+%ul
+  - @user.upvoted_crushes.each do |crush|
+    %li= link_to crush.url, crush_path(crush)
+

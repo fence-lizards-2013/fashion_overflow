@@ -19,4 +19,9 @@ class User < ActiveRecord::Base
   validates :username, presence: true
   validates :username, uniqueness: true
   has_secure_password
+
+  def upvoted_crushes
+    votes.where(up: true).map { |vote| vote.crush }
+  end
+
 end
