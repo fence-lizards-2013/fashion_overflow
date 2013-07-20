@@ -1,17 +1,16 @@
 <span class="sort_type">Trending Crushes</span>
 
 <% if flash.any? %>
-  <h3 style="color: red;"><%= flash[:error] %></h3>
-  <h3 style="color: green;"><%= flash[:success] %></h3>
+<h3 style="color: red;"><%= flash[:error] %></h3>
+<h3 style="color: green;"><%= flash[:success] %></h3>
 <% end %>
 
- <div class="photo_block">
-   <% @sorted_crushes.each do |crush| %>
-    <div class="whole_photo">
-      <h3><%= link_to image_tag(crush.image.url, width: 500, :alt => crush.description), crush.image.url, html_options = { :class => "prettyPhoto", :rel => "prettyPhoto", :title => crush.description } %></h3>
-      <span class="crush_description"><%= crush.description %></span>
-        <span class="vote_link"><%= link_to "upvotes #{crush.up_votes.count}", votes_path({:crush_id => crush, :up => true}), :id => 'vote', :data => { :text => 'upvotes'}, :method => 'post', remote: true %></span>
-        <span class="vote_link"><%= link_to "downvotes #{crush.down_votes.count}", votes_path({:crush_id => crush, :up => false}), :data => { :text => 'downvotes'}, :id => 'vote', :method => 'post', remote: true %></span>
+<div class="photo_block">
+ <% @sorted_crushes.each do |crush| %>
+   <div class="whole_photo">
+    <h3><%= link_to image_tag(crush.image.url, :alt => crush.description), crush.image.url, html_options = { :class => "prettyPhoto", :rel => "prettyPhoto", :title => crush.description } %></h3>
+    <span class="crush_description"><%= crush.description %>
+      <span class="vote_link"><%= link_to "upvotes #{crush.up_votes.count}", votes_path({:crush_id => crush, :up => true}), :id => 'vote', :data => { :text => 'upvotes'}, :method => 'post', remote: true %><%= link_to "downvotes #{crush.down_votes.count}", votes_path({:crush_id => crush, :up => false}), :data => { :text => 'downvotes'}, :id => 'vote', :method => 'post', remote: true %></span>
     </div>
-   <% end %>
- </div>
+  <% end %>
+</div>

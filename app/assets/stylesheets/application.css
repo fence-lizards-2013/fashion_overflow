@@ -20,7 +20,7 @@
 }
 
 .whole_photo{
-  margin: 3em auto 1em auto;
+  margin: 0.5em auto 5em auto;
   padding-right: 5%;
   padding-left: 5%;
   display: block;
@@ -35,12 +35,12 @@ img{
 }
 
 .prettyPhoto{
-  display: block;
+  /*display: block;*/
   margin: auto;
 }
 
 .crush_description{
-  width: 40%;
+  /*width: 40%;*/
   font-family: 'Marker Felt';
   color: black;
   display: block;
@@ -50,10 +50,13 @@ img{
 }
 
 .vote_link{
+  /*position:absolute;*/
+  /*right:0px;*/
   float: right;
-  margin: 0 0 0 0;
+  width: 25%;
+  margin-right: 0;
+  margin-left: auto;
   display: inline-block;
-  /*margin: -1em 1% auto 1em;*/
 }
 
 /**{
@@ -92,7 +95,7 @@ img{
   }
 
   main{
-    display: block;
     margin: auto;
+    display: block;
     width: 80%;
   }
