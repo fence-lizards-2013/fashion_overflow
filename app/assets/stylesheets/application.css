@@ -32,6 +32,9 @@ img{
   padding: 1em;
   padding-bottom: 3em;
   background-color: #E0E0EB;
+  -moz-box-shadow: 6px 3px 5px #000000;
+  -webkit-box-shadow: 6px 3px 5px #000000;
+  box-shadow: 6px 3px 5px #000000;
 }
 
 .prettyPhoto{
