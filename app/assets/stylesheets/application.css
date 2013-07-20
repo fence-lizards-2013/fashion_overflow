@@ -20,8 +20,16 @@
 }
 
 .text_box{
-  padding: 1em;
+  padding: 1.5em;
   background-color: black;
+}
+
+.text_title{
+  font-size: 2em;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+  margin-bottom: 1.5em;
 }
 
 a{

@@ -1,15 +1,15 @@
 .text_box
-  %h2 Welcome #{ @user.username }
+  %h2.text_title Welcome #{ @user.username.capitalize }
 
   %h3 Your Uploaded Crushes:
 
   %ul
     - @user.crushes.each do |crush|
-      %li= link_to crush.url, crush_path(crush)
+      %li= link_to crush.description, crush_path(crush)
 
   %h3 Your Upvoted Crushes:
 
   %ul
     - @user.upvoted_crushes.each do |crush|
-      %li= link_to crush.url, crush_path(crush)
+      %li= link_to crush.description, crush_path(crush)
 
