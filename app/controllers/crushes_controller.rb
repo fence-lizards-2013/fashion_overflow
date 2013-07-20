@@ -4,7 +4,7 @@ class CrushesController < ApplicationController
     crushes = Crush.all
     @sorted_crushes = crushes.sort_by { |crush| crush.aggregate }.reverse
     @current_user = current_user
-    @crushes = Crush.all
+    # @crushes = Crush.all
   end
 
   def create
