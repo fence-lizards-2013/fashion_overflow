@@ -24,6 +24,12 @@
   background-color: black;
 }
 
+.vote_count{
+  font-size: .7em;
+  text-indent: 2%;
+  list-style: none;
+}
+
 .text_title{
   font-size: 2em;
   text-align: center;

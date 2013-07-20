@@ -6,10 +6,11 @@
   %ul
     - @user.crushes.each do |crush|
       %li= link_to crush.description, crush_path(crush)
+      %li.vote_count= crush.votes.count.to_s + " total votes"
 
   %h3 Your Upvoted Crushes:
 
   %ul
     - @user.upvoted_crushes.each do |crush|
       %li= link_to crush.description, crush_path(crush)
-
+      %li.vote_count= crush.votes.count.to_s + " total votes"
