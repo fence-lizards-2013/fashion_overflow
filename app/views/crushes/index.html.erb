@@ -6,12 +6,12 @@
 
  <div>
    <% @sorted_crushes.each do |crush| %>
-    <div>
+    <div class="crush_post">
       <h3><%= link_to image_tag(crush.image.url, width: 500, :alt => crush.description), crush.image.url, html_options = { :class => "prettyPhoto", :rel => "prettyPhoto", :title => crush.description } %></h3>
       <p><%= crush.description %></p>
-      <ul>
-        <li class="vote_link"><%= link_to "upvotes #{crush.up_votes.count}", votes_path({:crush_id => crush, :up => true}), :id => 'vote', :data => { :text => 'upvotes'}, :method => 'post', remote: true %></li>
-        <li class="vote_link"><%= link_to "downvotes #{crush.down_votes.count}", votes_path({:crush_id => crush, :up => false}), :data => { :text => 'downvotes'}, :id => 'vote', :method => 'post', remote: true %></li>
+      <ul data-aggregate="<%= crush.aggregate %>">
+        <li class="vote_link"><%= link_to "upvotes #{crush.up_votes.count}", votes_path({:crush_id => crush, :up => true}), :id => 'vote', :data => { :text => 'upvotes', :up => true }, :method => 'post', remote: true %></li>
+        <li class="vote_link"><%= link_to "downvotes #{crush.down_votes.count}", votes_path({:crush_id => crush, :up => false}), :data => { :text => 'downvotes', :up => true }, :id => 'vote', :method => 'post', remote: true %></li>
       </ul>
     </div><br>
    <% end %>

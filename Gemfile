@@ -11,8 +11,6 @@ gem 'haml'
 gem 'dragonfly', '~>0.9.15'
 gem 'rack-cache', :require => 'rack-cache'
 
-
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
