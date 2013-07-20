@@ -19,6 +19,16 @@
   font-size: 3em;
 }
 
+.text_box{
+  padding: 1em;
+  background-color: black;
+}
+
+a{
+  color: white;
+  font-weight: bold;
+}
+
 .whole_photo{
   margin: 0.5em auto 5em auto;
   padding-right: 5%;
