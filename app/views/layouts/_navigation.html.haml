@@ -1,9 +1,9 @@
 %header
-  %span.title=link_to 'Home', root_path
+  %span.title=link_to 'FashionOverflow', root_path
   %nav
     - if current_user
-      =link_to 'New Crush', new_crush_path 
-      =link_to 'My Crushes', user_path(current_user)
+      =link_to 'New Crush | ', new_crush_path
+      =link_to 'My Crushes | ', user_path(current_user)
       =link_to 'Logout', session_path(current_user), :method => :delete
     -else
       =link_to 'Login | ', new_session_path
