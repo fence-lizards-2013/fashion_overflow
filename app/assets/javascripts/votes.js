@@ -11,9 +11,7 @@ $(document).ready(function() {
     if ($(this).data().text === "downvotes") { 
       $outerClass.attr('data-aggregate', $current-1) 
     };
-    //todo: fix sorting
-    $('.photo_block').tsort('.whole_photo',{attr:'data-aggregate', order:'desc'});
-    debugger
+    $('.photo_block').children().tsort({attr:'data-aggregate', order:'desc'});
   });
 
 
