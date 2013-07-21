@@ -2,9 +2,11 @@ class CrushesController < ApplicationController
 
   def index
     crushes = Crush.all
-    #Execute rank_votes of crushes and return @sorted_crushes
-    @sorted_crushes = crushes.sort {|c1, c2| c1.rank_votes <=> c2.rank_votes}.reverse
-    # @sorted_crushes = crushes.sort_by { |crush| crush.aggregate }.reverse #Old
+    if session[:user_id]
+      @sorted_crushes = crushes.sort_by { |crush| crush.aggregate }.reverse
+    else
+      @sorted_crushes = crushes.sort {|c1, c2| c1.rank_votes <=> c2.rank_votes}.reverse
+    end
     @current_user = current_user
   end
 
