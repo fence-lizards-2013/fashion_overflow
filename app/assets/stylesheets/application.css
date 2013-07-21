@@ -30,6 +30,11 @@
   list-style: none;
 }
 
+a{
+  color: white;
+  font-weight: bold;
+}
+
 .text_title{
   font-size: 2em;
   text-align: center;
@@ -38,10 +43,6 @@
   margin-bottom: 1.5em;
 }
 
-a{
-  color: white;
-  font-weight: bold;
-}
 
 .whole_photo{
   margin: 0.5em auto 5em auto;
