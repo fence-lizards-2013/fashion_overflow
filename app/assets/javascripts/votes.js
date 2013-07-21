@@ -2,15 +2,18 @@ $(document).ready(function() {
 
   $('a#vote').on('ajax:success', function(e, response) {
     $(this).text($(this).data('text') + ' ' + response.new_count);
-    var ul = $(this).parents().eq(1);
-    var current = $(this).parents().eq(1).data().aggregate;
-    if ($(this).data().up) { 
-      ul.attr('data-aggregate', current+1) 
+    var $outerClass = $(this).parents().eq(2);
+    var $current = $(this).parents().eq(2).data().aggregate;
+
+    if ($(this).data().text === "upvotes") { 
+      $outerClass.attr('data-aggregate', $current+1) 
     };
-    if (!$(this).data().up) { 
-      ul.attr('data-aggregate', current-1) 
+    if ($(this).data().text === "downvotes") { 
+      $outerClass.attr('data-aggregate', $current-1) 
     };
-    $('.crush_post').tsort('ul',{attr:'data-aggregate', order:'desc'});
+    //todo: fix sorting
+    $('.photo_block').tsort('.whole_photo',{attr:'data-aggregate', order:'desc'});
+    debugger
   });
 
 
