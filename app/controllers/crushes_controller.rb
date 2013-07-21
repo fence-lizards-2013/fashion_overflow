@@ -1,10 +1,12 @@
 class CrushesController < ApplicationController
 
   def index
-    crushes = Crush.all
-    @sorted_crushes = crushes.sort_by { |crush| crush.aggregate }.reverse
+    # crushes = Crush.all
+    # @sorted_crushes = crushes.sort_by { |crush| crush.aggregate }.reverse
     @current_user = current_user
-    # @crushes = Crush.all
+    #  @sorted_crushes.page(params[:page]).per(2)
+    @sorted_crushes = Crush.order("description").page(params[:page]).per(3)
+
   end
 
   def create
