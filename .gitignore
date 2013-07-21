@@ -16,3 +16,6 @@
 
 #Ignore photos
 /public/system/dragonfly/*
+
+#Ignore buglist
+buglist

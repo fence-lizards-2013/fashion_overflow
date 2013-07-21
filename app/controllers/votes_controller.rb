@@ -12,7 +12,5 @@ class VotesController < ApplicationController
     else
       render :json => {:success => false}, :status => :unprocessable_entity
     end
-
   end
-
 end

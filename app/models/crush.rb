@@ -32,4 +32,15 @@ class Crush < ActiveRecord::Base
     down = self.down_votes.size
     up - down
   end
+
+  def rank_votes(gravity = 1.8)
+    # For a given crush
+    # Find all votes
+    # Points is the difference of upvotes and downvotes
+    # Time is the difference between now and when the crush was created (in hours)
+    # We fix gravity, but can override if necessary  
+    points = self.aggregate
+    time = ((Time.now - self.created_at) / 5760).round
+    rank = (points - 1).to_f / ((time + 2)**gravity)
+  end
 end

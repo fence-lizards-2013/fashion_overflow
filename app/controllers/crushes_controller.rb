@@ -2,9 +2,10 @@ class CrushesController < ApplicationController
 
   def index
     crushes = Crush.all
-    @sorted_crushes = crushes.sort_by { |crush| crush.aggregate }.reverse
+    #Execute rank_votes of crushes and return @sorted_crushes
+    @sorted_crushes = crushes.sort {|c1, c2| c1.rank_votes <=> c2.rank_votes}.reverse
+    # @sorted_crushes = crushes.sort_by { |crush| crush.aggregate }.reverse #Old
     @current_user = current_user
-    # @crushes = Crush.all
   end
 
   def create
@@ -39,7 +40,8 @@ class CrushesController < ApplicationController
     if @crush.save
       redirect_to crush_path(@crush)
     else
-
+      flash[:error] = "Oops, something went wrong. Please try again."
+      redirect_to crush_path
     end
   end
   
