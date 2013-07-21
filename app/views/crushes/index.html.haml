@@ -5,7 +5,7 @@
 
 .photo_block
   -@sorted_crushes.each do |crush|
-    .whole_photo
+    .whole_photo{:"data-aggregate" => "#{crush.aggregate}"}
       %h3=link_to image_tag(crush.image.url, :alt => crush.description), crush.image.url, html_options = { :class => "prettyPhoto", :rel => "prettyPhoto", :title => crush.description }
       %span.crush_description
         = crush.description
