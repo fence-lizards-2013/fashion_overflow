@@ -11,7 +11,18 @@ $(document).ready(function() {
     if ($(this).data().text === "downvotes") { 
       $outerClass.attr('data-aggregate', $current-1) 
     };
-    $('.photo_block').children().tsort({attr:'data-aggregate', order:'desc'});
+    
+    var $clone = $('.photo_block').children().clone();
+    var $sortedClone = $clone.clone().tsort({attr:'data-aggregate', order:'desc'});
+    var $container = $('.photo_block');
+    $container.children().remove();
+    $container.append($sortedClone.each(function(index,photo){
+      $photo = $(photo)
+      $photo.fadeIn('fast');
+    }));
+
+    // debugger
+    // $('.photo_block').children().tsort({attr:'data-aggregate', order:'desc'});
   });
 
 
@@ -19,14 +30,3 @@ $(document).ready(function() {
     alert("You already voted, DUMBASS !");
   });
 });
-
-//send ajax to server
-// on AJAX success
-// change vote count on the link
-      // change data-aggregate
-// IF position has changed based on order
-        //  fade out div
-            // figure out new order
-        //  slide down/up other ones to clear a new space
-        //  fade in the div
-// END
