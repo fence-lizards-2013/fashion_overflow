@@ -37,11 +37,10 @@ describe Crush do
     end
   end
 
-  context "#rank_votes"
-    it "should calculate a voting rank" #do
-      pending
-      # expect(crush_with_votes.rank_votes)
-    #end
+  context "#rank_votes" do
+    it "should calculate a voting rank" do
+      expect(crush.rank_votes).to be_a(Float)
+    end
   end
 
 end
