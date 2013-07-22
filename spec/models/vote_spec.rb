@@ -19,5 +19,5 @@ describe Vote do
     # this saves with a string....weirdd
     # it "should not allow for :up to be a string" do 
     #   expect(Vote.create(user_id: user_id, crush_id: crush_id, up: "string")).to be_invalid
-    # end
+  end
 end
