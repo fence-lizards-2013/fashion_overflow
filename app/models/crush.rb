@@ -6,8 +6,8 @@ class Crush < ActiveRecord::Base
   belongs_to :user
   has_many :users_who_voted, :through => :votes, :source => :user
 
-  validates_presence_of :url
-  validates_presence_of :description
+  # validates_presence_of :url
+  # validates_presence_of :description
 
   attr_accessible :url, 
                   :description, 

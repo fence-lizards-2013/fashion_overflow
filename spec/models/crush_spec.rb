@@ -7,10 +7,10 @@ describe Crush do
   let(:up_vote)            { create :vote, :up => true, :crush => nil }
   let(:down_vote)          { create :vote, :up => false, :crush => nil }
 
-  context "validations" do
-    it { should validate_presence_of :url }
-    it { should validate_presence_of :description }
-  end
+  # context "validations" do
+  #   it { should validate_presence_of :url }
+  #   it { should validate_presence_of :description }
+  # end
 
   context "#up_votes" do
     it "should return the number of up_votes" do
