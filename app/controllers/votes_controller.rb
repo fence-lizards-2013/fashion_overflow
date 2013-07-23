@@ -10,7 +10,7 @@ class VotesController < ApplicationController
     if @vote.save
       up_votes = @vote.crush.up_votes.count
       down_votes = @vote.crush.down_votes.count
-      render :json => { :aggregate => up_votes - down_votes, :up_votes => up_votes, :down_votes => down_votes, :id => crush.id }
+      render :json => { :aggregate => up_votes - down_votes, :up_votes => up_votes, :down_votes => down_votes, :id => @vote.crush.id }
     else
       render :json => {:success => false}, :status => :unprocessable_entity
     end

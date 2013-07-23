@@ -1,73 +1,57 @@
-// var PhotoList = {
-//   sort: function() {
-//     var $photosContainer = $('.photo_block');
-//     var $photos = $photosContainer.children().clone();
-//     var $sortedPhotos = $photos.tsort({data:'aggregate', order:'desc'});
-//     $photosContainer.children().remove();
-//     $photosContainer.append($sortedPhotos.each(function(index,photo){
-//       $photo = $(photo)
-//       $photo.fadeIn('fast');
-//     }));    
-//   }
-// }
-
-// var Photo = {
-//   updateCounts: function($voteLink, voteCount) {
-//     $voteLink.text($voteLink.data('text') + ' ' + voteCount.new_count);
-//     var $wholePhoto = $voteLink.parents().eq(2);
-//     var $current = $voteLink.parents().eq(2).data().aggregate;
-
-//     // we are using .attr('data-aggregate') rather than .data('aggregate') because
-//     // jQuery doesn't persist data attributes across scopes, and we use the aggregate
-//     // data attribute in the PhotoList above, too
-//     if($voteLink.data('text') === "upvotes"){
-//       $wholePhoto.attr('data-aggregate', $current+1);
-//     }else if($voteLink.data('text') === "downvotes"){ 
-//       $wholePhoto.attr('data-aggregate', $current-1);
-//     }else {
-//       alert("An error occurred");
-//     }
-//   }
-// }
-
 function PhotoList(photosContainerSelector) {
   this.$photosContainer = $(photosContainerSelector);
+  this.photoDivs = {};
   this.photos = {};
-  this.setPhotosFromChildren();
+  this.toBeSortedPhotos = [];
+  this.initializePhotosFromChildren();
 }
 
 PhotoList.prototype = {
-  setPhotosFromChildren: function() {
+  initializePhotosFromChildren: function() {
     // loop through all of my children, instantiate a photo object
     var self = this;
     this.$photosContainer.children().each(function(i, photo) {
       var $wholePhoto = $(photo);
-      self.photos[$wholePhoto.data('id')] = new Photo(
+      self.photoDivs[$wholePhoto.data('id')] = $wholePhoto;
+      var photo = new Photo(
         $wholePhoto.data('id'),
         $wholePhoto.data('up-votes'),
         $wholePhoto.data('down-votes'),
         $wholePhoto.data('aggregate')
       );
+      self.photos[$wholePhoto.data('id')] = photo;
+      self.toBeSortedPhotos.push(photo);
     });
   },
 
   updatePhoto: function(crush) {
     var photo = this.photos[crush.id];
     photo.aggregate = crush.aggregate;
-    photo.upVotes = crush.upVotes;
-    photo.downVotes = crush.downVotes;
-  }
+    photo.upVotes = crush.up_votes;
+    photo.downVotes = crush.down_votes;
 
-  sortedPhotos: function() {
-    // loop through this.photos, sorting based on our .aggregate attributes
-    // and return an array sorted in that order
-    var sortedPhotos = undefined; // FAIL
-    return sortedPhotos;
+    var $photoDiv = this.photoDivs[crush.id];
+    $photoDiv.find('.vote_link a').each(function(i, el) {
+      debugger
+      if ($(el).data('text') === 'upvotes') {
+        $(el).text("upvotes " + photo.upVotes);
+      } else {
+        $(el).text("downvotes " + photo.downVotes);
+      }
+    });
   },
 
   render: function() {
-    // clear out the photos container
-    // append each new whole photo
+    var sortedPhotos = this.toBeSortedPhotos.sort(function(photo1, photo2) {
+      // descending sort based on aggregate
+      return photo2.aggregate - photo1.aggregate;
+    });
+    this.toBeSortedPhotos = sortedPhotos;
+    this.$photosContainer.html('');
+    for (var i in sortedPhotos) {
+      var photo = sortedPhotos[i];
+      this.$photosContainer.append(this.photoDivs[photo.id]);
+    }
   }
 }
 
@@ -79,17 +63,14 @@ function Photo(id, upVotes, downVotes, aggregate) {
 }
 
 $(document).ready(function() {
-  // 1. create a PhotoList
   var photoList = new PhotoList('.photo_block');
 
   $('.photo_block').on('ajax:success', 'a.vote', function(e, crush) {
-    console.log(crush);
     photoList.updatePhoto(crush);
-    photoList.render(photoList.sortedPhotos());
+    photoList.render();
   });
 
   $('.photo_block').on('ajax:error', 'a.vote',function(e, xhr) {
-    console.log('got here!');
-    alert("You already voted, DUMBASS !");
+    alert("You already voted, DUMBASS!");
   });
 });
